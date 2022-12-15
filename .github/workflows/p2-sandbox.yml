@@ -1,0 +1,37 @@
+################################################
+#  GITHUB ACTION WORKFLOW NAME
+################################################
+name: Deploy to p2-sandbox environment
+
+################################################
+#  GITHUB ACTION EVENT TRIGGER
+################################################
+on:
+  workflow_dispatch:
+  push:
+    branches: ["develop"]
+
+################################################
+#  GITHUB ACTION JOBS
+################################################
+jobs:
+  deploy-p2-sandbox:
+    name: deploy-p2-sandbox
+    runs-on: ubuntu-latest
+    # timeout-minutes: 15
+
+    ################################################
+    #  GITHUB ACTIONS GLOBAL ENV VARIABLES
+    ################################################
+    env:
+      REGION: ap-southeast-2
+      ENV: dev # Valid values are dev,test,live only
+      STACK_NAME: p2-sandbox # Valid values are au,us,uk,p2,lf,nu,p1-sandbox,p1-stage,p2-sandbox,shared only
+
+    ################################################
+    #  GITHUB REPO CHECKOUT
+    ################################################
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
