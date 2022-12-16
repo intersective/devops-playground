@@ -18,6 +18,9 @@ jobs:
   deploy-p2-sandbox:
     name: deploy-p2-sandbox
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     # timeout-minutes: 15
 
     ################################################
