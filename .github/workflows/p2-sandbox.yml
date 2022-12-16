@@ -39,8 +39,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: AKIAVDHQT2EYPBAQBGEA
-          aws-secret-access-key: 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
+          role-session-name: GithubActionSession
           aws-region: ap-southeast-2
           role-to-assume: arn:aws:iam::977349090554:role/ci-s3-role-test
 
